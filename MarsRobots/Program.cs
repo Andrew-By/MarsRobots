@@ -13,9 +13,10 @@ namespace MarsRobots
             var gridString = Console.ReadLine();
             var gridSize = gridString.Split(' ');
             var grid = new Grid(int.Parse(gridSize[0]), int.Parse(gridSize[1]));
-            while (true)
+
+            var rPositionString = Console.ReadLine();
+            while (!string.IsNullOrEmpty(rPositionString))
             {
-                var rPositionString = Console.ReadLine();
                 var rPosition = rPositionString.Split(' ');
                 IRobot robot = new Robot(grid, new Position(int.Parse(rPosition[0]), int.Parse(rPosition[1]), Enum.Parse<Direction>(rPosition[2])));
                 robot = new ForwardCommand(robot);
@@ -24,6 +25,8 @@ namespace MarsRobots
 
                 robot.Run(Console.ReadLine());
                 Console.WriteLine(robot);
+
+                rPositionString = Console.ReadLine();
             }
         }
     }
