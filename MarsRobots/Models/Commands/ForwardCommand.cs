@@ -8,13 +8,9 @@ namespace MarsRobots.Models.Commands
 {
     public class ForwardCommand : CommandBase
     {
-        private bool _isLost;
-
         public ForwardCommand(IRobot robot) : base(robot)
         {
         }
-
-        public override bool IsLost => _isLost;
 
         public override void DoCommand(char cmd)
         {
@@ -46,7 +42,7 @@ namespace MarsRobots.Models.Commands
                 {
                     if (!Grid.HasScent(Position))
                     {
-                        _isLost = true;
+                        IsLost = true;
                         Grid.ReportScent(Position);
                     }
                 }

@@ -18,15 +18,21 @@ namespace MarsRobots.Models
 
         public Grid Grid { get; }
         public Position Position { get; }
-        public bool IsLost { get; protected set; }
+        public bool IsLost { get; set; }
 
         public void Run(string cmdLine)
         {
+            throw new InvalidOperationException("This robot doesn't support command execution");
         }
 
         public void DoCommand(char cmd)
         {
-            throw new ArgumentException();
+            throw new ArgumentException($"Unknown command {cmd}");
+        }
+
+        public override string ToString()
+        {
+            return Position.ToString() + (IsLost ? " LOST" : string.Empty);
         }
     }
 }

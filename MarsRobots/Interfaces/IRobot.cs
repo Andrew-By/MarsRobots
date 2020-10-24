@@ -10,7 +10,7 @@ namespace MarsRobots.Interfaces
     {
         Grid Grid { get; }
         Position Position { get; }
-        bool IsLost { get; }
+        bool IsLost { get; set; }
 
         void Run(string cmdLine);
         void DoCommand(char cmd);

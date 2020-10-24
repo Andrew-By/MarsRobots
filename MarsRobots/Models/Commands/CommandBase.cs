@@ -2,6 +2,7 @@
 using MarsRobots.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace MarsRobots.Models.Commands
@@ -18,7 +19,11 @@ namespace MarsRobots.Models.Commands
         public Grid Grid => _robot.Grid;
         public Position Position => _robot.Position;
 
-        public virtual bool IsLost => _robot.IsLost;
+        public bool IsLost
+        {
+            get => _robot.IsLost;
+            set => _robot.IsLost = value;
+        }
 
         public void Run(string cmdLine)
         {
@@ -33,6 +38,11 @@ namespace MarsRobots.Models.Commands
         public virtual void DoCommand(char cmd)
         {
             _robot.DoCommand(cmd);
+        }
+
+        public override string ToString()
+        {
+            return _robot.ToString();
         }
     }
 }

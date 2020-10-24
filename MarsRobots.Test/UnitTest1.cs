@@ -21,11 +21,7 @@ namespace MarsRobots.Test
         {
             IRobot robot = CreateRobot(_grid, new Position(1, 1, Direction.E));
             robot.Run("RFRFRFRF");
-
-            string output = robot.Position.ToString();
-            if (robot.IsLost)
-                output += " LOST";
-            Assert.AreEqual(output, "1 1 E");
+            Assert.AreEqual("1 1 E", robot.ToString());
         }
 
         [Test]
@@ -33,11 +29,7 @@ namespace MarsRobots.Test
         {
             IRobot robot = CreateRobot(_grid, new Position(3, 2, Direction.N));
             robot.Run("FRRFLLFFRRFLL");
-
-            string output = robot.Position.ToString();
-            if (robot.IsLost)
-                output += " LOST";
-            Assert.AreEqual(output, "3 3 N LOST");
+            Assert.AreEqual("3 3 N LOST", robot.ToString());
         }
 
         [Test]
@@ -45,11 +37,7 @@ namespace MarsRobots.Test
         {
             IRobot robot = CreateRobot(_grid, new Position(0, 3, Direction.W));
             robot.Run("LLFFFLFLFL");
-
-            string output = robot.Position.ToString();
-            if (robot.IsLost)
-                output += " LOST";
-            Assert.AreEqual(output, "2 3 S");
+            Assert.AreEqual("2 3 S", robot.ToString());
         }
 
         private IRobot CreateRobot(Grid grid, Position position)

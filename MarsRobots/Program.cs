@@ -23,11 +23,7 @@ namespace MarsRobots
                 robot = new RightCommand(robot);
 
                 robot.Run(Console.ReadLine());
-
-                Console.Write(robot.Position);
-                if (robot.IsLost)
-                    Console.Write(" LOST");
-                Console.WriteLine();
+                Console.WriteLine(robot);
             }
         }
     }
